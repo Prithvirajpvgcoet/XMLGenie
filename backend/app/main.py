@@ -8,6 +8,7 @@ from app.api.upload import router as upload_router
 from app.api.retrieve import router as retrieve_router
 from app.api.chat import router as chat_router
 from app.api.compare import router as compare_router
+from app.api.documents import router as documents_router
 
 
 @asynccontextmanager
@@ -31,6 +32,7 @@ app.include_router(upload_router)
 app.include_router(retrieve_router)
 app.include_router(chat_router)
 app.include_router(compare_router)
+app.include_router(documents_router)
 
 
 

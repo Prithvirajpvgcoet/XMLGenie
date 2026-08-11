@@ -215,6 +215,23 @@ export default function ComparePage() {
                 {result.summary}
               </div>
 
+              {/* Explanatory Guide */}
+              <div style={{
+                background: 'var(--surface)', border: '1px solid var(--border)',
+                borderRadius: 10, padding: '16px', marginBottom: 20,
+                fontSize: 13, color: 'var(--text-primary)'
+              }}>
+                <div style={{ fontWeight: 600, marginBottom: 8, color: 'var(--accent)' }}>💡 How to read these results:</div>
+                <ul style={{ paddingLeft: 20, marginBottom: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <li><strong style={{ color: 'var(--error)' }}>Removed:</strong> These XPaths exist in Document A (Original) but NOT in Document B (New Version).</li>
+                  <li><strong style={{ color: 'var(--success)' }}>Added:</strong> These XPaths exist in Document B (New Version) but NOT in Document A (Original).</li>
+                  <li><strong style={{ color: 'var(--warning)' }}>Modified:</strong> Common XPaths that exist in both documents but have different content.</li>
+                </ul>
+                <div style={{ color: 'var(--text-muted)', fontSize: 12 }}>
+                  <em>Note: If you compare two completely different XML files with different structures, it is 100% correct behavior to see mostly "Added" and "Removed" items because all their paths differ. To see a more interesting diff, upload the same file twice with a small edit (e.g. change one price manually) and compare those versions.</em>
+                </div>
+              </div>
+
               {/* Diff list */}
               <div className="card">
                 <div className="card-header">

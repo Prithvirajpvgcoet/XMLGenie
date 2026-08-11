@@ -34,7 +34,11 @@ You have TWO tools available:
 The current document has document_id = {doc_id}.
 ALWAYS use the appropriate tool before answering.
 Never call any other tool. Never hallucinate tool names.
-After getting results, summarize clearly and cite XPath locations.""")
+
+CRITICAL INSTRUCTIONS:
+- DO NOT perform manual math or sum up order totals. If asked for a total, search for a 'Metadata' or 'Total' node in the document.
+- Rely STRICTLY on the text in the retrieved chunks.
+- Always cite the XPath location of the data you found.""")
     messages = [system] + list(state["messages"])
     response = await llm_with_tools.ainvoke(messages)
     return {"messages": [response]}

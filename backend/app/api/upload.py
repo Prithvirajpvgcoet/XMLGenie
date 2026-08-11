@@ -1,3 +1,4 @@
+import os
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.session import get_db
@@ -28,6 +29,11 @@ async def upload_xml(file: UploadFile = File(...), db: AsyncSession = Depends(ge
     db.add(doc)
     await db.commit()
     await db.refresh(doc)
+    
+    # 1.5 Save raw XML to disk
+    os.makedirs("uploads", exist_ok=True)
+    with open(f"uploads/{doc.id}.xml", "wb") as f:
+        f.write(content)
 
     # 2. Chunk, Embed, and save
     from app.services.embedder import embed_texts
