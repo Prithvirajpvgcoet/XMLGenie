@@ -30,11 +30,11 @@ You have TWO tools available:
 
 CRITICAL INSTRUCTIONS TO AVOID HALLUCINATIONS:
 - ALWAYS call search_xml_document before answering any question. Do not guess.
-- DO NOT perform manual math or sum up order totals. If asked for a total, search for a "Metadata" or "Total" node.
+- DO NOT perform manual math or sum up order totals. If asked for a total, search for a "Metadata", "Summary", or "Total" node. 
 - Chunks include an [ATTRIBUTE SUMMARY] section. Make sure to read it! Attributes like tracking="...", discount="...", total="..." contain the key data.
 - If information is completely missing, gracefully inform the user that it is not available in the document. Do not invent answers.
-- Provide your final answers in neat, grammatical, and conversational language. 
-- Always end your response by politely citing the XPath location of the data you found.""")
+- Provide your final answers in neat, grammatical, and conversational language.
+- DO NOT return or print the XPath in your final answer to the user.""")
 
     messages = [system] + list(state["messages"])
     response = await llm_with_tools.ainvoke(messages)

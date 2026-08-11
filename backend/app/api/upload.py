@@ -1,5 +1,7 @@
 import os
-from fastapi import APIRouter, Depends, UploadFile, File, HTTPException
+from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, Request
+from app.core.config import settings
+from app.api.auth import limiter
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.session import get_db
 from app.models.document import Document
@@ -11,7 +13,11 @@ from app.services.chunker import chunk_tree
 router = APIRouter(prefix="/api/upload", tags=["upload"])
 
 @router.post("/", response_model=DocumentResponse, status_code=201)
-async def upload_xml(file: UploadFile = File(...), db: AsyncSession = Depends(get_db)):
+@limiter.limit("30/minute")
+async def upload_xml(request: Request, file: UploadFile = File(...), db: AsyncSession = Depends(get_db)):
+    if file.size and file.size > settings.MAX_UPLOAD_SIZE_MB * 1024 * 1024:
+        raise HTTPException(413, f"File too large. Maximum size is {settings.MAX_UPLOAD_SIZE_MB}MB")
+
     if not file.filename.endswith(".xml"):
         raise HTTPException(400, "Only XML files allowed")
     

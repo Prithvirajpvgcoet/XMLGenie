@@ -5,7 +5,8 @@ import Sidebar from '../components/Sidebar.jsx'
 import Topbar from '../components/Topbar.jsx'
 import XmlTreeExplorer from '../components/XmlTreeExplorer.jsx'
 import axios from 'axios'
-
+import toast, { Toaster } from 'react-hot-toast'
+import { motion, AnimatePresence } from 'framer-motion'
 export default function ChatPage() {
   const { docId } = useParams()
   const navigate = useNavigate()
@@ -78,7 +79,11 @@ export default function ChatPage() {
     }
     
     ws.onopen = () => console.log("WebSocket connected")
-    ws.onclose = () => console.log("WebSocket disconnected")
+    ws.onclose = (event) => {
+      console.log("WebSocket disconnected")
+      if (!event.wasClean) toast.error("Agent disconnected. Trying to reconnect...", { duration: 5000 })
+    }
+    ws.onerror = () => toast.error("Agent connection error.")
     wsRef.current = ws
 
     return () => ws.close()
@@ -155,6 +160,7 @@ export default function ChatPage() {
 
   return (
     <div className="app-shell">
+      <Toaster position="top-right" />
       <Sidebar />
       <div className="main">
         <Topbar title="Chat" subtitle={docName} />
@@ -246,7 +252,7 @@ export default function ChatPage() {
           />
 
           {/* Right Panel: Trace & Citations */}
-          <div style={{ width: rightWidth, flexShrink: 0, display: 'flex', flexDirection: 'column', background: 'var(--surface)', pointerEvents: isDragging ? 'none' : 'auto' }}>
+          <div style={{ width: rightWidth, flexShrink: 0, display: 'flex', flexDirection: 'column', background: 'rgba(255, 255, 255, 0.7)', backdropFilter: 'blur(12px)', pointerEvents: isDragging ? 'none' : 'auto' }}>
             
             {/* Tabs */}
             <div style={{ display: 'flex', borderBottom: '1px solid var(--border)' }}>
@@ -283,15 +289,22 @@ export default function ChatPage() {
                      </div>
                   ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                      {traces.map((t, i) => (
-                        <div key={i} style={{ 
-                          padding: 10, borderRadius: 6, fontSize: 12, 
-                          background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.1)',
-                          color: 'var(--text-secondary)'
-                        }}>
-                           <span style={{ color: 'var(--accent)', marginRight: 6 }}>&gt;</span> {t}
-                        </div>
-                      ))}
+                      <AnimatePresence>
+                        {traces.map((t, i) => (
+                          <motion.div 
+                            key={i}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3 }}
+                            style={{ 
+                              padding: 10, borderRadius: 6, fontSize: 12, 
+                              background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)',
+                              color: 'var(--text-secondary)'
+                            }}>
+                             <span style={{ color: 'var(--accent)', marginRight: 6 }}>&gt;</span> {t}
+                          </motion.div>
+                        ))}
+                      </AnimatePresence>
                       {loading && (
                         <div style={{ fontSize: 12, color: 'var(--text-muted)', paddingLeft: 10 }}>
                           <span className="spinner" style={{ width: 10, height: 10, display: 'inline-block', marginRight: 6 }} /> Thinking...

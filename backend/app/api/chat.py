@@ -1,14 +1,17 @@
 import uuid
 import json
-from fastapi import APIRouter, Depends, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, Depends, WebSocket, WebSocketDisconnect, Request
 from langchain_core.messages import HumanMessage
 from app.schemas.chat import ChatRequest, ChatResponse
 from app.services.agent.graph import graph
 
 router = APIRouter(prefix="/api/chat", tags=["chat"])
 
+from app.api.auth import limiter
+
 @router.post("/", response_model=ChatResponse)
-async def chat_with_xml(req: ChatRequest):
+@limiter.limit("30/minute")
+async def chat_with_xml(request: Request, req: ChatRequest):
     thread_id = req.thread_id or str(uuid.uuid4())
     
     # LangGraph configuration for memory/threads

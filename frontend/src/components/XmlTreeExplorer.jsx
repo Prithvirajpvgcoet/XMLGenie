@@ -24,7 +24,7 @@ function TreeNode({ node, isRoot = false }) {
           color: 'var(--text-primary)',
           transition: 'background 0.2s ease'
         }}
-        onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+        onMouseEnter={e => e.currentTarget.style.background = 'rgba(74,108,247,0.08)'}
         onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
       >
         <span style={{ color: 'var(--text-muted)', width: 14, display: 'inline-block' }}>
@@ -74,7 +74,8 @@ export default function XmlTreeExplorer({ treeData }) {
 
   return (
     <div style={{ 
-      background: 'var(--surface)', 
+      background: 'rgba(255, 255, 255, 0.7)', 
+      backdropFilter: 'blur(12px)',
       borderRight: '1px solid var(--border)',
       height: '100%',
       display: 'flex',

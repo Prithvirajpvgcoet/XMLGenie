@@ -1,0 +1,27 @@
+[
+    {
+        "question": "What is the total revenue for this invoice bundle?",
+        "expected_facts": ["14958.22"],
+        "expected_xpaths": ["/InvoiceBundle/Summary/GrossRevenue"]
+    },
+    {
+        "question": "How many total orders are in this document?",
+        "expected_facts": ["8"],
+        "expected_xpaths": ["/InvoiceBundle/Summary/TotalOrders"]
+    },
+    {
+        "question": "Which customer ordered the 'Noise-Cancelling Headset' and what is their email?",
+        "expected_facts": ["Elena Rodriguez", "elena@startupventures.co"],
+        "expected_xpaths": ["/InvoiceBundle/Orders/Order[@id='ORD-4525']"]
+    },
+    {
+        "question": "Find the order paid via wire transfer. What is the reference ID?",
+        "expected_facts": ["WT-20260112-003"],
+        "expected_xpaths": ["/InvoiceBundle/Orders/Order[@id='ORD-4528']"]
+    },
+    {
+        "question": "What is the tracking number for the order that was shipped via UPS?",
+        "expected_facts": ["1Z999AA10123456789"],
+        "expected_xpaths": ["/InvoiceBundle/Orders/Order[@id='ORD-4522']"]
+    }
+]
