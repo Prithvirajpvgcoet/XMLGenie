@@ -29,15 +29,24 @@ async def upload_xml(file: UploadFile = File(...), db: AsyncSession = Depends(ge
     await db.commit()
     await db.refresh(doc)
 
-    # 2. Chunk and save (without embeddings for now)
+    # 2. Chunk, Embed, and save
+    from app.services.embedder import embed_texts
     chunks = chunk_tree(tree)
-    for c_data in chunks:
+    
+    # Get texts to embed (the raw XML chunks)
+    texts_to_embed = [c["text_content"] for c in chunks]
+    
+    # Generate vectors in one batch
+    vectors = embed_texts(texts_to_embed)
+    
+    for c_data, vector in zip(chunks, vectors):
         chunk = Chunk(
             document_id=doc.id,
             xpath=c_data["xpath"],
             parent_tag=c_data["parent_tag"],
             text_content=c_data["text_content"],
-            attributes=c_data["attributes"]
+            attributes=c_data["attributes"],
+            embedding=vector  # <-- Now we save the vector to pgvector!
         )
         db.add(chunk)
     
