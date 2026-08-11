@@ -3,7 +3,7 @@ from langchain_groq import ChatGroq
 from langchain_core.messages import SystemMessage
 from langgraph.prebuilt import ToolNode, tools_condition
 from app.services.agent.state import AgentState
-from app.services.agent.tools import search_xml_document
+from app.services.agent.tools import search_xml_document, compare_xml_documents
 from app.core.config import settings
 
 # Initialize LLM
@@ -13,7 +13,7 @@ llm = ChatGroq(
 )
 
 # Bind tools
-tools = [search_xml_document]
+tools = [search_xml_document, compare_xml_documents]
 llm_with_tools = llm.bind_tools(tools)
 
 SYSTEM_PROMPT = """You are XMLGenie, an expert AI assistant for analyzing XML documents.
@@ -26,12 +26,15 @@ Always cite the XPath location of the data you found."""
 # Define nodes
 async def agent_node(state: AgentState):
     doc_id = state["document_id"]
-    system = SystemMessage(content=f"""You are XMLGenie, an expert AI assistant for analyzing XML documents.
-You have ONLY ONE tool available: search_xml_document.
-The document you are working with has document_id = {doc_id}.
-ALWAYS call search_xml_document with document_id={doc_id} and a relevant query before answering.
+    system = SystemMessage(content=f"""You are XMLGenie, an expert AI assistant for analyzing and comparing XML documents.
+You have TWO tools available:
+1. search_xml_document — search inside a single XML document
+2. compare_xml_documents — compare two XML documents and find differences
+
+The current document has document_id = {doc_id}.
+ALWAYS use the appropriate tool before answering.
 Never call any other tool. Never hallucinate tool names.
-After getting search results, summarize the answer clearly and cite the XPath locations found.""")
+After getting results, summarize clearly and cite XPath locations.""")
     messages = [system] + list(state["messages"])
     response = await llm_with_tools.ainvoke(messages)
     return {"messages": [response]}

@@ -1,10 +1,10 @@
 import { useNavigate, NavLink } from 'react-router-dom'
-import { LayoutDashboard, MessageSquare, Upload, Settings, LogOut, FileCode2 } from 'lucide-react'
+import { LayoutDashboard, MessageSquare, Upload, GitCompare, LogOut, FileCode2 } from 'lucide-react'
 
 const navItems = [
   { icon: LayoutDashboard, label: 'Dashboard', to: '/dashboard' },
   { icon: MessageSquare, label: 'Chat', to: '/chat/0' },
-  { icon: Upload, label: 'Upload', to: '/dashboard' },
+  { icon: GitCompare, label: 'Compare', to: '/compare' },
 ]
 
 export default function Sidebar() {
