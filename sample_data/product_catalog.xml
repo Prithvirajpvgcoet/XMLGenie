@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProductCatalog lastUpdated="2026-01-15" version="3.1">
+  <Products>
+    <Product sku="WDG-001" category="electronics" active="true">
+      <Name>Wireless Charging Dock</Name>
+      <Price>49.99</Price><Cost>22.50</Cost>
+      <Stock warehouse="US-WEST">342</Stock><Stock warehouse="US-EAST">128</Stock>
+      <Rating avg="4.3" reviews="1247"/>
+    </Product>
+    <Product sku="CBL-USB-C" category="accessories" active="true">
+      <Name>USB-C Cable 2m</Name>
+      <Price>12.99</Price><Cost>3.20</Cost>
+      <Stock warehouse="US-WEST">2100</Stock><Stock warehouse="US-EAST">1850</Stock>
+      <Rating avg="4.6" reviews="3421"/>
+    </Product>
+    <Product sku="MON-27K" category="electronics" active="true">
+      <Name>27in 4K Monitor</Name>
+      <Price>449.00</Price><Cost>210.00</Cost>
+      <Stock warehouse="US-WEST">85</Stock><Stock warehouse="US-EAST">62</Stock>
+      <Rating avg="4.7" reviews="892"/>
+    </Product>
+    <Product sku="MNT-ARM" category="accessories" active="true">
+      <Name>Monitor Arm Mount</Name>
+      <Price>79.99</Price><Cost>28.00</Cost>
+      <Stock warehouse="US-WEST">200</Stock><Stock warehouse="US-EAST">175</Stock>
+      <Rating avg="4.4" reviews="678"/>
+    </Product>
+    <Product sku="KBD-MECH" category="peripherals" active="true">
+      <Name>Mechanical Keyboard Cherry MX Blue</Name>
+      <Price>129.99</Price><Cost>52.00</Cost>
+      <Stock warehouse="US-WEST">310</Stock><Stock warehouse="US-EAST">290</Stock>
+      <Rating avg="4.5" reviews="2156"/>
+    </Product>
+    <Product sku="TAB-10" category="electronics" active="true">
+      <Name>10in Tablet Pro</Name>
+      <Price>599.00</Price><Cost>320.00</Cost>
+      <Stock warehouse="US-WEST">120</Stock><Stock warehouse="US-EAST">95</Stock>
+      <Rating avg="4.8" reviews="445"/>
+    </Product>
+    <Product sku="STY-PEN" category="accessories" active="true">
+      <Name>Active Stylus Pen</Name>
+      <Price>89.99</Price><Cost>25.00</Cost>
+      <Stock warehouse="US-WEST">450</Stock><Stock warehouse="US-EAST">380</Stock>
+      <Rating avg="4.6" reviews="312"/>
+    </Product>
+    <Product sku="LAP-PRO16" category="electronics" active="true">
+      <Name>Laptop Pro 16in M3 Max 64GB</Name>
+      <Price>3499.00</Price><Cost>2100.00</Cost>
+      <Stock warehouse="US-WEST">30</Stock><Stock warehouse="US-EAST">22</Stock>
+      <Rating avg="4.9" reviews="156"/>
+    </Product>
+    <Product sku="DOCK-TB4" category="accessories" active="true">
+      <Name>Thunderbolt 4 Dock</Name>
+      <Price>299.99</Price><Cost>130.00</Cost>
+      <Stock warehouse="US-WEST">95</Stock><Stock warehouse="US-EAST">80</Stock>
+      <Rating avg="4.4" reviews="523"/>
+    </Product>
+    <Product sku="HDST-NC" category="audio" active="true">
+      <Name>Noise-Cancelling Headset</Name>
+      <Price>179.99</Price><Cost>65.00</Cost>
+      <Stock warehouse="US-WEST">280</Stock><Stock warehouse="US-EAST">245</Stock>
+      <Rating avg="4.5" reviews="1890"/>
+    </Product>
+    <Product sku="WBC-HD" category="peripherals" active="true">
+      <Name>HD Webcam 1080p</Name>
+      <Price>69.99</Price><Cost>22.00</Cost>
+      <Stock warehouse="US-WEST">420</Stock><Stock warehouse="US-EAST">390</Stock>
+      <Rating avg="4.3" reviews="2340"/>
+    </Product>
+    <Product sku="SSD-2TB" category="storage" active="true">
+      <Name>NVMe SSD 2TB</Name>
+      <Price>189.99</Price><Cost>85.00</Cost>
+      <Stock warehouse="US-WEST">500</Stock><Stock warehouse="US-EAST">475</Stock>
+      <Rating avg="4.8" reviews="3102"/>
+    </Product>
+    <Product sku="RAM-64" category="storage" active="true">
+      <Name>DDR5 RAM 64GB Kit</Name>
+      <Price>249.99</Price><Cost>120.00</Cost>
+      <Stock warehouse="US-WEST">180</Stock><Stock warehouse="US-EAST">160</Stock>
+      <Rating avg="4.7" reviews="890"/>
+    </Product>
+    <Product sku="MSE-ERG" category="peripherals" active="true">
+      <Name>Ergonomic Wireless Mouse</Name>
+      <Price>59.99</Price><Cost>18.00</Cost>
+      <Stock warehouse="US-WEST">550</Stock><Stock warehouse="US-EAST">480</Stock>
+      <Rating avg="4.4" reviews="1567"/>
+    </Product>
+    <Product sku="PRT-LSR" category="office" active="true">
+      <Name>Laser Printer Color Duplex</Name>
+      <Price>649.00</Price><Cost>350.00</Cost>
+      <Stock warehouse="US-WEST">45</Stock><Stock warehouse="US-EAST">38</Stock>
+      <Rating avg="4.1" reviews="234"/>
+    </Product>
+  </Products>
+  <PricingRules>
+    <Tier name="bronze" discount="0%"/>
+    <Tier name="silver" discount="5%"/>
+    <Tier name="gold" discount="10%"/>
+    <Tier name="platinum" discount="15%"/>
+    <BulkDiscount minQty="10" extra="5%"/>
+    <BulkDiscount minQty="50" extra="10%"/>
+  </PricingRules>
+</ProductCatalog>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APIConfig version="2.4.1" environment="production" lastModified="2026-01-14">
+  <GlobalSettings>
+    <Setting key="api.base.url" value="https://api.acmeglobal.com/v2"/>
+    <Setting key="api.timeout.ms" value="30000"/>
+    <Setting key="api.retry.max" value="3"/>
+    <Setting key="api.rate.limit.rpm" value="1000"/>
+    <Setting key="logging.level" value="INFO"/>
+  </GlobalSettings>
+  <Services>
+    <Service name="OrderService" enabled="true" version="3.2.0" owner="commerce-team">
+      <Endpoint path="/orders" method="GET" auth="bearer" rateLimit="200/min" cache="60s"/>
+      <Endpoint path="/orders/{id}" method="GET" auth="bearer" rateLimit="500/min" cache="30s"/>
+      <Endpoint path="/orders" method="POST" auth="bearer" rateLimit="50/min"/>
+      <HealthCheck path="/orders/health" interval="30s" timeout="5s"/>
+      <CircuitBreaker enabled="true" failureThreshold="5" resetTimeout="60s"/>
+    </Service>
+    <Service name="InventoryService" enabled="true" version="2.1.0" owner="supply-chain-team">
+      <Endpoint path="/inventory" method="GET" auth="api_key" rateLimit="300/min" cache="120s"/>
+      <Endpoint path="/inventory/{sku}/reserve" method="POST" auth="bearer" rateLimit="100/min"/>
+      <HealthCheck path="/inventory/health" interval="60s" timeout="5s"/>
+    </Service>
+    <Service name="NotificationService" enabled="true" version="1.5.2" owner="platform-team">
+      <Endpoint path="/notifications/send" method="POST" auth="service_token" rateLimit="1000/min"/>
+      <HealthCheck path="/notifications/health" interval="30s" timeout="3s"/>
+      <CircuitBreaker enabled="true" failureThreshold="10" resetTimeout="120s"/>
+    </Service>
+    <Service name="AuthService" enabled="true" version="4.0.1" owner="security-team">
+      <Endpoint path="/auth/token" method="POST" auth="none" rateLimit="20/min"/>
+      <Endpoint path="/auth/revoke" method="POST" auth="bearer" rateLimit="50/min"/>
+      <Security tokenExpiry="900s" refreshExpiry="604800s" mfaEnabled="true" maxLoginAttempts="5" lockoutDuration="900s"/>
+      <HealthCheck path="/auth/health" interval="15s" timeout="3s"/>
+      <CircuitBreaker enabled="true" failureThreshold="3" resetTimeout="30s"/>
+    </Service>
+  </Services>
+  <Middleware>
+    <CORS origins="https://app.acmeglobal.com,https://admin.acmeglobal.com" methods="GET,POST,PUT,DELETE"/>
+    <Compression enabled="true" minSize="1024"/>
+    <RateLimiting global="1000/min" burst="50"/>
+  </Middleware>
+  <Deployment strategy="rolling" minReplicas="3" maxReplicas="12" targetCPU="70%"/>
+</APIConfig>

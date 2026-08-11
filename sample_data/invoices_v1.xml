@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InvoiceBundle currency="USD" vendor="Acme Global" generatedAt="2026-01-15">
+  <Orders>
+    <Order id="ORD-4521" status="delivered" priority="standard">
+      <Customer name="Sarah Chen" email="sarah@techcorp.com" tier="gold"/>
+      <Address street="742 Innovation Dr" city="San Francisco" state="CA" zip="94102"/>
+      <Items>
+        <Item sku="WDG-001" name="Wireless Charging Dock" qty="2" price="49.99" discount="10%" total="89.98"/>
+        <Item sku="CBL-USB-C" name="USB-C Cable 2m" qty="5" price="12.99" discount="0%" total="64.95"/>
+      </Items>
+      <Payment method="credit_card" subtotal="154.93" tax="13.36" shipping="0.00" total="168.29"/>
+      <Shipping carrier="FedEx" tracking="FX-9988771122" estimated="2026-01-07" actual="2026-01-06" status="delivered"/>
+      <Notes>Gift wrapping requested. Delivered early.</Notes>
+    </Order>
+
+    <Order id="ORD-4522" status="delivered" priority="express">
+      <Customer name="Marcus Johnson" email="m.johnson@designlab.io" tier="platinum"/>
+      <Address street="88 Creative Blvd" city="Austin" state="TX" zip="73301"/>
+      <Items>
+        <Item sku="MON-27K" name="27in 4K Monitor" qty="3" price="449.00" discount="15%" total="1144.95"/>
+        <Item sku="MNT-ARM" name="Monitor Arm Mount" qty="3" price="79.99" discount="15%" total="203.97"/>
+        <Item sku="KBD-MECH" name="Mechanical Keyboard" qty="3" price="129.99" discount="10%" total="350.97"/>
+      </Items>
+      <Payment method="purchase_order" subtotal="1699.89" tax="140.24" shipping="0.00" total="1840.13"/>
+      <Shipping carrier="UPS" tracking="1Z999AA10123456789" estimated="2026-01-06" actual="2026-01-06" status="delivered"/>
+      <Notes>Bulk order for new office. Platinum discount applied.</Notes>
+    </Order>
+
+    <Order id="ORD-4523" status="shipped" priority="standard">
+      <Customer name="Priya Patel" email="priya@globalhealth.org" tier="silver"/>
+      <Address street="1200 Wellness Way" city="Chicago" state="IL" zip="60601"/>
+      <Items>
+        <Item sku="TAB-10" name="10in Tablet Pro" qty="1" price="599.00" discount="5%" total="569.05"/>
+        <Item sku="STY-PEN" name="Active Stylus Pen" qty="1" price="89.99" discount="0%" total="89.99"/>
+        <Item sku="CASE-10" name="Tablet Protective Case" qty="1" price="45.00" discount="0%" total="45.00"/>
+      </Items>
+      <Payment method="credit_card" subtotal="704.04" tax="72.16" shipping="12.99" total="789.19"/>
+      <Shipping carrier="USPS" tracking="9400111899223100001234" estimated="2026-01-14" actual="" status="in_transit"/>
+    </Order>
+
+    <Order id="ORD-4524" status="delivered" priority="overnight">
+      <Customer name="David Kim" email="dkim@finserve.com" tier="platinum"/>
+      <Address street="55 Wall Street, Floor 22" city="New York" state="NY" zip="10005"/>
+      <Items>
+        <Item sku="LAP-PRO16" name="Laptop Pro 16in M3 Max 64GB" qty="1" price="3499.00" discount="0%" total="3499.00"/>
+        <Item sku="DOCK-TB4" name="Thunderbolt 4 Dock" qty="1" price="299.99" discount="5%" total="284.99"/>
+      </Items>
+      <Payment method="wire_transfer" subtotal="3783.99" tax="335.83" shipping="49.99" total="4169.81"/>
+      <Shipping carrier="FedEx" tracking="FX-OVERNIGHT-5566" estimated="2026-01-10" actual="2026-01-10" status="delivered"/>
+      <Notes>Overnight shipping. Signature required.</Notes>
+    </Order>
+
+    <Order id="ORD-4525" status="processing" priority="standard">
+      <Customer name="Elena Rodriguez" email="elena@startupventures.co" tier="bronze"/>
+      <Address street="3200 Startup Lane" city="Denver" state="CO" zip="80202"/>
+      <Items>
+        <Item sku="HDST-NC" name="Noise-Cancelling Headset" qty="10" price="179.99" discount="20%" total="1439.92"/>
+        <Item sku="WBC-HD" name="HD Webcam 1080p" qty="10" price="69.99" discount="20%" total="559.92"/>
+      </Items>
+      <Payment method="credit_card" subtotal="1999.84" tax="152.99" shipping="24.99" total="2177.82" paid=""/>
+      <Shipping carrier="pending" tracking="" estimated="2026-01-20" actual="" status="awaiting_shipment"/>
+      <Notes>Bulk for remote team. Payment pending verification.</Notes>
+    </Order>
+
+    <Order id="ORD-4526" status="delivered" priority="standard">
+      <Customer name="James OBrien" email="jobrien@university.edu" tier="gold"/>
+      <Address street="500 University Ave" city="Seattle" state="WA" zip="98195"/>
+      <Items>
+        <Item sku="SSD-2TB" name="NVMe SSD 2TB" qty="4" price="189.99" discount="12%" total="668.76"/>
+        <Item sku="RAM-64" name="DDR5 RAM 64GB Kit" qty="2" price="249.99" discount="12%" total="439.98"/>
+      </Items>
+      <Payment method="purchase_order" subtotal="1108.74" tax="113.65" shipping="0.00" total="1222.39"/>
+      <Shipping carrier="UPS" tracking="1Z999BB20234567890" estimated="2026-01-14" actual="2026-01-15" status="delivered"/>
+      <Notes>Academic purchase. Delivered one day late — weather delay.</Notes>
+    </Order>
+
+    <Order id="ORD-4527" status="cancelled" priority="standard">
+      <Customer name="Linda Nakamura" email="l.nakamura@retailchain.com" tier="silver"/>
+      <Address street="8800 Commerce Pkwy" city="Miami" state="FL" zip="33131"/>
+      <Items>
+        <Item sku="PRT-LSR" name="Laser Printer Color Duplex" qty="2" price="649.00" discount="0%" total="1298.00"/>
+      </Items>
+      <Payment method="credit_card" subtotal="1298.00" tax="90.86" shipping="39.99" total="1428.85" paid=""/>
+      <Shipping carrier="none" tracking="" estimated="" actual="" status="cancelled"/>
+      <Notes>Cancelled by customer — found local supplier. Refund initiated.</Notes>
+    </Order>
+
+    <Order id="ORD-4528" status="delivered" priority="express">
+      <Customer name="Ahmed Hassan" email="a.hassan@medigroup.com" tier="gold"/>
+      <Address street="2100 Medical Center Dr" city="Houston" state="TX" zip="77030"/>
+      <Items>
+        <Item sku="MON-27K" name="27in 4K Monitor" qty="5" price="449.00" discount="18%" total="1840.90"/>
+        <Item sku="WDG-001" name="Wireless Charging Dock" qty="5" price="49.99" discount="10%" total="224.96"/>
+        <Item sku="KBD-MECH" name="Mechanical Keyboard" qty="5" price="129.99" discount="10%" total="584.96"/>
+        <Item sku="MSE-ERG" name="Ergonomic Wireless Mouse" qty="5" price="59.99" discount="10%" total="269.96"/>
+      </Items>
+      <Payment method="wire_transfer" subtotal="2920.78" tax="240.96" shipping="0.00" total="3161.74"/>
+      <Shipping carrier="FedEx" tracking="FX-EXPRESS-7788" estimated="2026-01-14" actual="2026-01-13" status="delivered"/>
+      <Notes>Medical office equipment refresh. Delivered early.</Notes>
+    </Order>
+  </Orders>
+</InvoiceBundle>

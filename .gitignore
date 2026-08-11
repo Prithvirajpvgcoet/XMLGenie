@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+node_modules/
+dist/
+.env
+.env.local
+.vscode/
+.idea/
+*.log
+.pytest_cache/
+htmlcov/
+*.db
+uploads/
