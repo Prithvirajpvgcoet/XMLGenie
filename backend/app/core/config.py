@@ -22,6 +22,8 @@ class Settings(BaseSettings):
     GEMINI_EMBEDDING_MODEL: str = "text-embedding-004"
     CLAUDE_API_KEY: str = ""
     CLAUDE_MODEL: str = "claude-sonnet-4-20250514"
+    GROQ_API_KEY: str = ""
+    GROQ_MODEL: str = "llama-3.1-8b-instant"
 
     # Retrieval
     EMBEDDING_DIMENSION: int = 768
