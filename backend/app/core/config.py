@@ -27,7 +27,7 @@ class Settings(BaseSettings):
 
     # Retrieval
     EMBEDDING_DIMENSION: int = 768
-    VECTOR_SEARCH_TOP_K: int = 10
+    VECTOR_SEARCH_TOP_K: int = 4
 
     # Agent
     AGENT_MAX_STEPS: int = 10

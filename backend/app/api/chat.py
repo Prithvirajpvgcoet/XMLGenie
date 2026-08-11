@@ -63,7 +63,6 @@ async def chat_websocket(websocket: WebSocket, document_id: int):
                     elif kind == "on_tool_end":
                         await websocket.send_json({"type": "trace", "action": "Tool call completed."})
                     elif kind == "on_chain_end" and event["name"] == "agent_node":
-                        # We can also capture final message here if needed
                         pass
                 
                 # Send a done signal for this interaction

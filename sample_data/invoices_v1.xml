@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <InvoiceBundle currency="USD" vendor="Acme Global" generatedAt="2026-01-15">
+  <Metadata>
+    <BundleId>INV-BUNDLE-2026-001</BundleId>
+    <GeneratedBy>ERP System v4.2</GeneratedBy>
+    <TotalOrders>8</TotalOrders>
+    <TotalRevenue>14957.22</TotalRevenue>
+    <Period start="2026-01-01" end="2026-01-15"/>
+  </Metadata>
   <Orders>
     <Order id="ORD-4521" status="delivered" priority="standard">
       <Customer name="Sarah Chen" email="sarah@techcorp.com" tier="gold"/>
