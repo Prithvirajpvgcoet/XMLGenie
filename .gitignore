@@ -11,3 +11,8 @@ dist/
 htmlcov/
 *.db
 uploads/
+
+frontend:-npm run dev
+backend : conda activate xmlgenie
+          docker-compose up -d db
+          uvicorn app.main:app --port 5000

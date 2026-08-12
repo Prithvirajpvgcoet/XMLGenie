@@ -558,6 +558,31 @@ Upload one of the XML files from `sample_data/` and start asking questions.
 
 ---
 
+# ☁️ Live Cloud Deployment (Free)
+
+XMLGenie is configured with Infrastructure-as-Code for zero-cost deployment to the cloud!
+
+### 1. Database (Supabase)
+1. Create a free account at [Supabase.com](https://supabase.com).
+2. Create a new project and copy the `Transaction` Connection String (URI).
+3. Connect to your database locally and run `alembic upgrade head` to build the tables.
+
+### 2. Backend (Render.com)
+1. Create a free account at [Render.com](https://render.com).
+2. Connect your GitHub account and click **New > Blueprint**.
+3. Render will automatically detect the `render.yaml` file in this repository and build your Python FastAPI Docker container!
+4. Make sure to paste your Supabase `DATABASE_URL` and `GROQ_API_KEY` into the Render dashboard Environment Variables.
+5. Copy your live Render URL (e.g. `https://xmlgenie-backend.onrender.com`).
+
+### 3. Frontend (Vercel)
+1. Create a free account at [Vercel.com](https://vercel.com).
+2. Import your GitHub repository.
+3. Edit the Root Directory to be **`frontend`**.
+4. In Vercel Environment Variables, set `VITE_API_BASE_URL` to your live Render backend URL.
+5. Click **Deploy**. Vercel will automatically use `vercel.json` to proxy your requests perfectly to the backend.
+
+---
+
 # 🔐 Environment Variables
 
 ### Backend — `backend/.env`
